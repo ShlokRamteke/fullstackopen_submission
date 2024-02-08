@@ -4,14 +4,12 @@ const Button = (props) => {
   return <button onClick={props.handleClick}>{props.name}</button>;
 };
 
-const StatisticsLine = (props) => {
+const StatisticsLine = ({ text, value }) => {
   return (
-    <div>
-      <p>
-        {" "}
-        {props.text} {props.value}
-      </p>
-    </div>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   );
 };
 
@@ -22,18 +20,22 @@ const Statistics = (props) => {
     return (
       <div>
         <h1>Statistics</h1>
-        <StatisticsLine text="good" value={props.good} />
-        <StatisticsLine text="neutral" value={props.neutral} />
-        <StatisticsLine text="bad" value={props.bad} />
-        <StatisticsLine text="all" value={props.countAll} />
-        <StatisticsLine
-          text="average"
-          value={(props.good - props.bad) / props.countAll}
-        />
-        <StatisticsLine
-          text="positive"
-          value={(props.good / props.countAll) * 100 + " %"}
-        />
+        <table>
+          <tbody>
+            <StatisticsLine text="good" value={props.good} />
+            <StatisticsLine text="neutral" value={props.neutral} />
+            <StatisticsLine text="bad" value={props.bad} />
+            <StatisticsLine text="all" value={props.countAll} />
+            <StatisticsLine
+              text="average"
+              value={(props.good - props.bad) / props.countAll}
+            />
+            <StatisticsLine
+              text="positive"
+              value={(props.good / props.countAll) * 100 + " %"}
+            />
+          </tbody>
+        </table>
       </div>
     );
   }
