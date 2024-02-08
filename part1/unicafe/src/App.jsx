@@ -13,6 +13,8 @@ const App = () => {
   const setToNeutral = (neutral) => setNeutral(neutral);
   const setToBad = (bad) => setBad(bad);
 
+  let countAll = good + neutral + bad;
+
   return (
     <div>
       <h1> Give Feedback</h1>
@@ -20,9 +22,13 @@ const App = () => {
       <Button handleClick={() => setToNeutral(neutral + 1)} name="neutral" />
       <Button handleClick={() => setToBad(bad + 1)} name="bad" />
       <h2> Stats</h2>
-      <p> Good {good}</p>
-      <p> Neutral {neutral}</p>
-      <p> Bad {bad}</p>
+      <p> Good: {good}</p>
+      <p> Neutral: {neutral}</p>
+      <p> Bad: {bad}</p>
+      <p>All: {countAll}</p>
+      <p> Positive: {(good / countAll) * 100}</p>
+      <p> Average: {(good - bad) / countAll}</p>
+      <p></p>
     </div>
   );
 };
